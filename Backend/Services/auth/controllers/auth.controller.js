@@ -5,6 +5,7 @@ import User from '../models/user.model';
 export const login = async (req, res) => {
     try {
         const { token } = req.body;
+        // verifyIdToken checks the Firebase token sent by the client, confirms it's genuine and unexpired, and returns the decoded user data — this is how the backend authenticates requests securely
         const decoded = await getAuth(app).verifyIdToken(token)
         const user = await User.findOne({
             firebaseUid: decoded.uid

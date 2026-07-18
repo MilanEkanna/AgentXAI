@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     },
     name:String,
     email:String,
-    avatar:String
+    avatar:String //No need of password as we only doing the google auth
 },{
     timestamps:true
 })

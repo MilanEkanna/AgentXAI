@@ -5,7 +5,7 @@ import { auth, googleProvider } from "../utils/firebase";
 const App = () => {
 
   const googleLogin = async()=>{
-    const data = await signInWithPopup(auth, googleProvider);
+    const data = await signInWithPopup(auth, googleProvider); // this is for desktop and for mobile  use signInWithRedirect in this the page changes and then come back after login in
     console.log("data",data);
     
   }
