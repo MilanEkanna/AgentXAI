@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase-admin/auth'
-import { app } from '../config/firebase';
-import User from '../models/user.model';
+import { app } from '../config/firebase.js';
+import User from '../models/user.model.js';
 
 export const login = async (req, res) => {
     try {
