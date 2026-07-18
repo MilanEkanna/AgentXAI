@@ -1,0 +1,41 @@
+import { getAuth } from 'firebase-admin/auth'
+import { app } from '../config/firebase';
+import User from '../models/user.model';
+
+export const login = async (req, res) => {
+    try {
+        const { token } = req.body;
+        const decoded = await getAuth(app).verifyIdToken(token)
+        const user = await User.findOne({
+            firebaseUid: decoded.uid
+        });
+
+        if (!user) {
+            user = await User.create({
+                firebaseUid: decoded.uid,
+                name: decoded.displayName,
+                email: decoded.email,
+                avatar: decoded.picture
+            })
+        }
+
+        const sessionId = crypto.randomUUID()
+
+        res.cookie("session", sessionId, {
+            httpOnly: true,
+            secure: true,
+            sameSite:"strict",
+            maxAge:7*24*60*60*1000
+        });
+        return res.status(200).json({
+            message:"Success",
+            user
+        })
+
+    } catch (error) {
+        return res.status(500).json({
+            message:"Login error"
+        })
+        
+    }
+}

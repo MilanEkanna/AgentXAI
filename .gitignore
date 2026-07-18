@@ -1,0 +1,54 @@
+ 
+# Dependencies
+ 
+**/node_modules/
+
+ 
+# Environment Variables
+ 
+**/.env
+**/.env.*
+
+# Keep example env files
+!**/.env.example
+
+# ===========================
+# Firebase Service Account
+# ===========================
+**/serviceAccountKey.json
+**/serviceAccountKey*.json
+
+# ===========================
+# Logs
+# ===========================
+*.log
+logs/
+
+# ===========================
+# Build
+# ===========================
+dist/
+build/
+
+# ===========================
+# Cache
+# ===========================
+.cache/
+coverage/
+
+# ===========================
+# VS Code
+# ===========================
+.vscode/
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+Thumbs.db
+
+# ===========================
+# Misc
+# ===========================
+*.pid
+*.seed
