@@ -2,10 +2,13 @@ import { signInWithPopup } from "firebase/auth";
 import React, { useState } from "react";
 import { auth, googleProvider } from "../../utils/firebase";
 import api from "../../utils/axios";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const {userData} = useSelector(state=>state.user)
 
   const handleLogin = async (token) => {
     try {
