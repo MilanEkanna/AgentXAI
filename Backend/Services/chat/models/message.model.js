@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const messageSchema = new mongoose.Schema({
     conversationId:{
-        type:mongoose.Schema.type.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"Conversation"
     },
     role:{
