@@ -1,4 +1,4 @@
-import redis from '../../Shared/redis/redis'
+import redis from '../../Shared/redis/redis.js'
 
 const protect = async(req, res, next)=>{
  try {
@@ -10,7 +10,7 @@ const protect = async(req, res, next)=>{
         }
 
         const session = await redis.get(`session-${sessionId}`)
-        
+
         if(!session){
              return res.status(400).json({
                 message:"Session Expired"
@@ -26,3 +26,5 @@ const protect = async(req, res, next)=>{
             })
  }
 }
+
+export default protect
